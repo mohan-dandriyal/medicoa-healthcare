@@ -1,0 +1,721 @@
+{
+  "common": {
+    "globalUI": {
+      "loadingText": "Loading WedBliss Experience...",
+      "notFoundText": "Page Not Found"
+    },
+    "Footer": {
+      "logo": {
+        "src": "/main logo/footerLogo.png",
+        "alt": "MedicoA Healthcare and Pharmaceuticals"
+      },
+      "description": "Your trusted partner for quality medicines, healthcare essentials, and wellness products, committed to better health and well-being for every family.",
+      "address": {
+        "title": "Our Address",
+        "lines": [
+          "123 Wellness Street,",
+          "New Delhi, India - 110001"
+        ]
+      },
+      "contact": {
+        "title": "Contact Us",
+        "phone": "+91 98765 43210",
+        "email": "support@medicoahealth.com"
+      },
+      "socials": [
+        {
+          "name": "Facebook",
+          "icon": "facebook",
+          "href": "https://facebook.com/"
+        },
+        {
+          "name": "Twitter",
+          "icon": "twitter",
+          "href": "https://twitter.com/"
+        },
+        {
+          "name": "Instagram",
+          "icon": "instagram",
+          "href": "https://instagram.com/"
+        },
+        {
+          "name": "YouTube",
+          "icon": "youtube",
+          "href": "https://youtube.com/"
+        }
+      ],
+      "links": [
+        {
+          "label": "Home",
+          "href": "#home"
+        },
+        {
+          "label": "About Us",
+          "href": "#about"
+        },
+        {
+          "label": "Products",
+          "href": "#products"
+        },
+        {
+          "label": "Services",
+          "href": "#services"
+        },
+        {
+          "label": "Contact Us",
+          "href": "#contact"
+        }
+      ],
+      "copyright": " © 2026 MedicoA. All Rights Reserved."
+    }
+  },
+  "categories": {
+    "MedicoA": {
+      "sections": {
+        "Header": {
+          "variants": {
+            "MedicoAHeader2": {
+              "brand": {
+                "name": "MedicoA",
+                "tagline": "Healthcare & Pharmaceuticals",
+                "logo": "/main logo/logo.png",
+                "logoAlt": "MedicoA Healthcare & Pharmaceuticals",
+                "href": "/"
+              },
+              "navigation": [
+                {
+                  "id": "home",
+                  "label": "Home",
+                  "href": "/",
+                  "children": []
+                },
+                {
+                  "id": "about",
+                  "label": "About Us",
+                  "href": "/about",
+                  "children": []
+                },
+                {
+                  "id": "services",
+                  "label": "Services",
+                  "href": "/services"
+                },
+                {
+                  "id": "products",
+                  "label": "Products",
+                  "href": "/products"
+                },
+                {
+                  "id": "team",
+                  "label": "Our Team",
+                  "href": "/team",
+                  "children": []
+                },
+                {
+                  "id": "contact",
+                  "label": "Contact Us",
+                  "href": "/contact",
+                  "children": []
+                }
+              ],
+              "settings": {
+                "sticky": true,
+                "headerHeight": 96,
+                "mobileBreakpoint": "lg"
+              }
+            }
+          }
+        },
+        "Hero": {
+          "variants": {
+            "MedicoAHero2": {
+              "id": "home",
+              "eyebrow": "Healthcare & Pharmaceuticals",
+              "title": {
+                "primary": "Your Health.",
+                "highlight": "Our Priority."
+              },
+              "description": "Delivering high-quality, safe and affordable pharmaceutical products for healthier lives and stronger communities.",
+              "buttons": [
+                {
+                  "id": "contact",
+                  "text": "Contact Us",
+                  "href": "/contact",
+                  "icon": "arrow_forward",
+                  "variant": "primary"
+                }
+              ],
+              "images": {
+                "main": {
+                  "src": "/other/hero-1.webp",
+                  "alt": "Pharmacist assisting a customer at MedicoA pharmacy"
+                },
+                "products": {
+                  "src": "/other/hero-2.webp",
+                  "alt": "Healthcare and pharmaceutical products"
+                }
+              },
+              "theme": {
+                "primaryColor": "#006B3C",
+                "secondaryColor": "#18A34A",
+                "backgroundColor": "#F2FFFA"
+              }
+            }
+          }
+        },
+        "AboutUs": {
+          "variants": {
+            "MedicoAAboutUs2": {
+              "id": "about",
+              "eyebrow": "About Us",
+              "title": {
+                "primary": "A Trusted Name in",
+                "highlight": "Healthcare & Pharmaceuticals"
+              },
+              "description": "At MedicoA, we are committed to delivering high-quality healthcare and pharmaceutical solutions that improve lives and build healthier communities.",
+              "visionMission": [
+                {
+                  "id": "vision",
+                  "title": "Our Vision",
+                  "description": "To be a globally trusted healthcare and pharmaceutical partner, promoting better health and well-being for all.",
+                  "icon": "science"
+                },
+                {
+                  "id": "mission",
+                  "title": "Our Mission",
+                  "description": "To develop and deliver safe, effective, and affordable healthcare solutions with a focus on quality, innovation, and patient care.",
+                  "icon": "medication"
+                }
+              ],
+              "contact": {
+                "address": "KLG St, No.99, New Delhi - 110001",
+                "phone": "+91 98765 43210"
+              },
+              "image": {
+                "src": "/other/about-main.webp",
+                "alt": "Healthcare professionals working in a modern pharmaceutical laboratory"
+              },
+              "statistics": [
+                {
+                  "id": "experience",
+                  "value": "10+",
+                  "label": "Years of Experience",
+                  "icon": "workspace_premium"
+                },
+                {
+                  "id": "clients",
+                  "value": "500+",
+                  "label": "Happy Clients",
+                  "icon": "groups"
+                },
+                {
+                  "id": "products",
+                  "value": "300+",
+                  "label": "Quality Products",
+                  "icon": "inventory_2"
+                }
+              ]
+            }
+          }
+        },
+        "Services": {
+          "variants": {
+            "MedicoAServices2": {
+              "id": "services",
+              "eyebrow": "Our Services",
+              "title": {
+                "primary": "Comprehensive Healthcare &",
+                "highlight": "Pharmaceutical Services"
+              },
+              "description": "From high-quality medicines to innovative healthcare solutions, we provide end-to-end pharmaceutical services for better health and well-being.",
+              "featured": {
+                "image": "/other/service.webp",
+                "alt": "Healthcare scientist examining a laboratory sample",
+                "title": "Trusted Healthcare & Pharmaceutical Services"
+              },
+              "items": [
+                {
+                  "id": 1,
+                  "title": "Pharmaceutical Manufacturing",
+                  "description": "Advanced, quality-driven manufacturing of a wide range of medicines.",
+                  "icon": "medication",
+                  "href": "/services/pharmaceutical-manufacturing"
+                },
+                {
+                  "id": 2,
+                  "title": "Research & Development",
+                  "description": "Innovative and science-backed R&D for effective and safer healthcare solutions.",
+                  "icon": "science",
+                  "href": "/services/research-development"
+                },
+                {
+                  "id": 3,
+                  "title": "Healthcare Solutions",
+                  "description": "Comprehensive healthcare products and services to support better living.",
+                  "icon": "favorite",
+                  "href": "/services/healthcare-solutions"
+                },
+                {
+                  "id": 4,
+                  "title": "Quality Assurance",
+                  "description": "Stringent quality checks to ensure safe, reliable, and effective products.",
+                  "icon": "verified",
+                  "href": "/services/quality-assurance"
+                },
+                {
+                  "id": 5,
+                  "title": "Contract Manufacturing",
+                  "description": "Flexible and scalable manufacturing solutions for healthcare brands.",
+                  "icon": "volunteer",
+                  "href": "/services/contract-manufacturing"
+                },
+                {
+                  "id": 6,
+                  "title": "Regulatory Support",
+                  "description": "Complete guidance for compliance with global pharmaceutical standards.",
+                  "icon": "assignment",
+                  "href": "/services/regulatory-support"
+                }
+              ]
+            }
+          }
+        },
+        "WhyChooseUs": {
+          "variants": {
+            "MedicoAWhyChooseUs2": {
+              "id": "why-choose-us",
+              "eyebrow": "Why Choose Us",
+              "title": {
+                "primary": "Your Trusted",
+                "highlight": "Healthcare Partner"
+              },
+              "description": "We deliver high-quality, safe, and innovative healthcare and pharmaceutical solutions with a commitment to your well-being.",
+              "image": {
+                "src": "/other/whyChoose.webp",
+                "alt": "Smiling healthcare professional at MedicoA pharmacy"
+              },
+              "features": [
+                {
+                  "id": 1,
+                  "title": "Priority Customer Support",
+                  "description": "Responsive and reliable support for all your healthcare needs.",
+                  "icon": "groups"
+                },
+                {
+                  "id": 2,
+                  "title": "Innovation and Growth",
+                  "description": "Driven by research and advanced pharmaceutical solutions.",
+                  "icon": "science"
+                },
+                {
+                  "id": 3,
+                  "title": "Global Community of Wellness",
+                  "description": "Committed to improving health and well-being worldwide.",
+                  "icon": "verified"
+                }
+              ]
+            }
+          }
+        },
+        "Statistics": {
+          "variants": {
+            "MedicoAStatistics2": {
+              "id": "statistics",
+              "items": [
+                {
+                  "id": 1,
+                  "value": 108,
+                  "suffix": "+",
+                  "title": "Professional Staff",
+                  "description": "Our team offers reliable, personalized care to ensure the best outcomes.",
+                  "icon": "groups"
+                },
+                {
+                  "id": 2,
+                  "value": 1,
+                  "suffix": "K+",
+                  "title": "Active Members",
+                  "description": "They are committed to providing ongoing support and care.",
+                  "icon": "handshake"
+                },
+                {
+                  "id": 3,
+                  "value": 21,
+                  "suffix": "+",
+                  "title": "Years Experience",
+                  "description": "We leverage our expertise to deliver accurate advice and trusted services.",
+                  "icon": "calendar"
+                },
+                {
+                  "id": 4,
+                  "value": 500,
+                  "suffix": "+",
+                  "title": "Happy Clients",
+                  "description": "We are trusted by individuals and families for quality healthcare.",
+                  "icon": "award"
+                }
+              ]
+            }
+          }
+        },
+        "Testimonials": {
+          "variants": {
+            "MedicoATestimonials2": {
+              "id": "testimonials",
+              "eyebrow": "Testimonials",
+              "title": {
+                "primary": "Let’s Hear What They Say",
+                "highlight": "About Us"
+              },
+              "description": "Real experiences from our valued customers who trust us for their healthcare needs.",
+              "image": {
+                "src": "/other/doctor_clean.webp",
+                "alt": "Smiling healthcare professional"
+              },
+              "settings": {
+                "autoplay": true,
+                "delay": 4000,
+                "speed": 700,
+                "loop": true
+              },
+              "reviews": [
+                {
+                  "id": 1,
+                  "name": "Priya Sharma",
+                  "location": "New Delhi, India",
+                  "rating": 5,
+                  "review": "Exceptional service and care! The pharmacists here always go above and beyond to make sure I understand my medications and provide valuable advice. They truly care about my health.",
+                  "image": "/images/customer-1.webp"
+                },
+                {
+                  "id": 2,
+                  "name": "Rahul Mehta",
+                  "location": "Noida, India",
+                  "rating": 4,
+                  "review": "A reliable and customer-friendly pharmacy. The staff is knowledgeable, polite, and always ready to help. I've had a great experience every time I visit.",
+                  "image": "/images/customer-2.webp"
+                },
+                {
+                  "id": 3,
+                  "name": "Anita Verma",
+                  "location": "Gurugram, India",
+                  "rating": 5,
+                  "review": "Great service, genuine products, and timely support. I especially appreciate how they guide me with the right healthcare solutions for my needs.",
+                  "image": "/images/customer-3.webp"
+                },
+                {
+                  "id": 4,
+                  "name": "Amit Kapoor",
+                  "location": "Delhi, India",
+                  "rating": 5,
+                  "review": "The team provides excellent support and makes healthcare information easy to understand. Their professional approach makes every visit comfortable.",
+                  "image": "/images/customer-4.webp"
+                },
+                {
+                  "id": 5,
+                  "name": "Neha Gupta",
+                  "location": "Noida, India",
+                  "rating": 5,
+                  "review": "A great experience with helpful staff and quality healthcare products. I appreciate their attention to detail and customer service.",
+                  "image": "/images/customer-5.webp"
+                }
+              ]
+            }
+          }
+        },
+        "Team": {
+          "variants": {
+            "MedicoATeam2": {
+              "id": "team",
+              "eyebrow": "Our Team",
+              "title": {
+                "primary": "Meet Our Healthcare",
+                "highlight": "Experts"
+              },
+              "description": "A dedicated team of experienced and compassionate professionals committed to providing the best healthcare for you and your family.",
+              "settings": {
+                "autoplay": true,
+                "delay": 4000,
+                "speed": 700,
+                "loop": true
+              },
+              "members": [
+                {
+                  "id": 1,
+                  "name": "Dr. Robert Nathan",
+                  "designation": "General Physician",
+                  "image": "/other/team-1.webp",
+                  "alt": "Dr. Robert Nathan",
+                  "icon": "medical"
+                },
+                {
+                  "id": 2,
+                  "name": "Dr. Angela Clay",
+                  "designation": "Pharmacist",
+                  "image": "/other/team-2.webp",
+                  "alt": "Dr. Angela Clay",
+                  "icon": "medication"
+                },
+                {
+                  "id": 3,
+                  "name": "Dr. Kenzo Abigail",
+                  "designation": "Medical Laboratory",
+                  "image": "/other/team-3.webp",
+                  "alt": "Dr. Kenzo Abigail",
+                  "icon": "science"
+                },
+                {
+                  "id": 4,
+                  "name": "Dr. Clarine Kitty",
+                  "designation": "Nurse",
+                  "image": "/other/team-4.webp",
+                  "alt": "Dr. Clarine Kitty",
+                  "icon": "favorite"
+                }
+              ]
+            }
+          }
+        },
+        "Faq": {
+          "variants": {
+            "MedicoAFaq2": {
+              "id": "faq",
+              "title": {
+                "primary": "Frequently Asked",
+                "highlight": "Questions"
+              },
+              "description": "Find quick answers to common questions about our pharmacy services, medications, prescriptions, and more.",
+              "image": {
+                "src": "/other/faq.webp",
+                "alt": "Smiling pharmacist standing in a pharmacy"
+              },
+              "contactCard": {
+                "title": "Still Have a Question?",
+                "description": "We're here to help you anytime.",
+                "icon": "chat",
+                "link": "#contact"
+              },
+              "questions": [
+                {
+                  "id": 1,
+                  "question": "What is the role of a pharmacist in healthcare?",
+                  "answer": "A pharmacist ensures the safe and effective use of medications, provides guidance on proper dosage, checks for drug interactions, and supports your overall health and wellness."
+                },
+                {
+                  "id": 2,
+                  "question": "What if I miss a dose of my medication?",
+                  "answer": "The correct action depends on your medication and how late the dose is. Check the patient information leaflet or ask your pharmacist. Do not take a double dose unless your healthcare professional specifically advises it."
+                },
+                {
+                  "id": 3,
+                  "question": "How should I store my medications?",
+                  "answer": "Store medications according to their packaging instructions, away from excessive heat, moisture, and direct sunlight. Some medicines require refrigeration. Always keep medications out of reach of children."
+                },
+                {
+                  "id": 4,
+                  "question": "What are the signs of an allergic reaction to medication?",
+                  "answer": "Possible signs include itching, rash, hives, or swelling. Difficulty breathing, swelling of the tongue or throat, or fainting can indicate a severe allergic reaction and require immediate emergency medical attention."
+                },
+                {
+                  "id": 5,
+                  "question": "What vaccines should I get as an adult?",
+                  "answer": "Recommended vaccines depend on your age, medical history, occupation, and previous vaccinations. Consult your healthcare professional about routine and risk-based immunizations."
+                },
+                {
+                  "id": 6,
+                  "question": "What should I do if I experience a medication overdose?",
+                  "answer": "Seek emergency medical assistance immediately if an overdose is suspected. Do not wait for symptoms to appear or induce vomiting unless a medical professional instructs you to do so. Keep the medication packaging available for emergency responders."
+                }
+              ]
+            }
+          }
+        },
+        "Cta": {
+          "variants": {
+            "MedicoACta2": {
+              "id": "cta",
+              "image": "/other/cta.webp",
+              "imageAlt": "Pharmacy medicines and healthcare products",
+              "title": "Your Trusted",
+              "highlight": "Pharmacy Partner",
+              "description": "Quality medicines, healthcare essentials, and wellness products—all in one place for your better health."
+            }
+          }
+        },
+        "Products": {
+          "variants": {
+            "MedicoAProducts2": {
+              "id": "products",
+              "eyebrow": "Our Products",
+              "eyebrowIcon": "medication",
+              "title": "Wide Range of",
+              "highlight": "Pharmacy Products",
+              "description": "Explore our quality medicines, healthcare essentials, and wellness products to support a healthier life.",
+              "items": [
+                {
+                  "id": 1,
+                  "title": "Prescription Medicines",
+                  "description": "Genuine and quality-assured medications.",
+                  "image": "/other/product-1.webp",
+                  "imageAlt": "Prescription medicine bottles and tablets",
+                  "icon": "medication"
+                },
+                {
+                  "id": 2,
+                  "title": "Health Monitoring",
+                  "description": "Reliable devices for everyday health care.",
+                  "image": "/other/product-2.webp",
+                  "imageAlt": "Digital blood pressure monitor and thermometer",
+                  "icon": "monitoring"
+                },
+                {
+                  "id": 3,
+                  "title": "Personal Care",
+                  "description": "Daily essentials for hygiene and wellness.",
+                  "image": "/other/product-3.webp",
+                  "imageAlt": "Personal care and hygiene products",
+                  "icon": "eco"
+                },
+                {
+                  "id": 4,
+                  "title": "Vitamins & Supplements",
+                  "description": "Boost your immunity and overall health.",
+                  "image": "/other/product-4.webp",
+                  "imageAlt": "Multivitamin bottle with supplement capsules",
+                  "icon": "health"
+                }
+              ]
+            }
+          }
+        },
+        "Contact": {
+          "variants": {
+            "MedicoAContact2": {
+              "id": "contact",
+              "eyebrow": "Contact Us",
+              "title": {
+                "primary": "Get in Touch",
+                "highlight": "With Us"
+              },
+              "description": "Have a question, need assistance, or want to know more about our services? We're here to help. Reach out to us today!",
+              "form": {
+                "submitText": "Send Message",
+                "fields": [
+                  {
+                    "name": "name",
+                    "placeholder": "Your Name",
+                    "type": "text",
+                    "icon": "person",
+                    "required": true
+                  },
+                  {
+                    "name": "email",
+                    "placeholder": "Your Email",
+                    "type": "email",
+                    "icon": "email",
+                    "required": true
+                  },
+                  {
+                    "name": "phone",
+                    "placeholder": "Phone Number",
+                    "type": "tel",
+                    "icon": "phone",
+                    "required": true
+                  },
+                  {
+                    "name": "subject",
+                    "placeholder": "Subject",
+                    "type": "text",
+                    "icon": "subject",
+                    "required": true
+                  }
+                ],
+                "messagePlaceholder": "Your Message"
+              },
+              "info": {
+                "image": "/other/contact.webp",
+                "imageAlt": "Healthcare and pharmaceutical products",
+                "items": [
+                  {
+                    "title": "Our Location",
+                    "value": "123 Wellness Street, New Delhi, India - 110001",
+                    "icon": "location",
+                    "href": ""
+                  },
+                  {
+                    "title": "Email Us",
+                    "value": "info@pharmacycare.com",
+                    "icon": "email",
+                    "href": "mailto:info@pharmacycare.com"
+                  },
+                  {
+                    "title": "Call Us",
+                    "value": "+91 98765 43210",
+                    "icon": "phone",
+                    "href": "tel:+919876543210"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "templateComponents": {
+        "shared": {
+          "Header": "MedicoAHeader2",
+          "Footer": "MedicoAFooter2"
+        },
+        "pages": {
+          "home": {
+            "components": [
+              {
+                "key": "HeroSection",
+                "component": "MedicoAHero2"
+              },
+              {
+                "key": "AboutUs",
+                "component": "MedicoAAboutUs2"
+              },
+              {
+                "key": "Services",
+                "component": "MedicoAServices2"
+              },
+              {
+                "key": "WhyChooseUs",
+                "component": "MedicoAWhyChooseUs2"
+              },
+              {
+                "key": "Statistics",
+                "component": "MedicoAStatistics2"
+              },
+              {
+                "key": "Testimonials",
+                "component": "MedicoATestimonials2"
+              },
+              {
+                "key": "Team",
+                "component": "MedicoATeam2"
+              },
+              {
+                "key": "Faq",
+                "component": "MedicoAFaq2"
+              },
+              {
+                "key": "Cta",
+                "component": "MedicoACta2"
+              },
+              {
+                "key": "Products",
+                "component": "MedicoAProducts2"
+              },
+              {
+                "key": "Contact",
+                "component": "MedicoAContact2"
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
+}
