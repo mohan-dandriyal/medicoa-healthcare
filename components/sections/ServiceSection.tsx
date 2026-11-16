@@ -70,7 +70,7 @@ export default function ServicesSection() {
     return (
         <section
             id={services.id}
-            className="relative isolate overflow-hidden bg-[#FAFFFC] py-14"
+            className="relative isolate overflow-hidden bg-[#FAFFFC] py-14 my-10"
         >
            {/* Decorative background shapes */}
             <DecorativebackgroundTopLeft className="w-[380px] h-[500px] -top-84" />
@@ -92,7 +92,7 @@ export default function ServicesSection() {
                         duration: 0.7,
                         ease: EASE,
                     }}
-                    className="mx-auto mb-12 max-w-[1050px] text-center"
+                    className="mx-auto mb-8 sm:mb-10 max-w-[1050px] text-center"
                 >
 
                     <SectionEyebrow>
@@ -125,7 +125,7 @@ export default function ServicesSection() {
                 </motion.div>
 
                 {/* MAIN GRID */}
-                <div className="grid items-stretch gap-5 lg:grid-cols-[1.2fr_3fr]">
+                <div className="grid items-stretch gap-5 xl:grid-cols-[minmax(0,1.1fr)_minmax(0,3fr)]">
 
                     {/* FEATURED IMAGE CARD */}
                     <motion.div
@@ -142,7 +142,7 @@ export default function ServicesSection() {
                             duration: 0.8,
                             ease: EASE,
                         }}
-                        className="group relative min-h-[430px] overflow-hidden rounded-[25px] bg-[#005B40] lg:min-h-[560px]"
+                        className="group relative min-h-[430px] overflow-hidden rounded-[25px] bg-[#005B40] xl:min-h-[480px]"
                     >
                         <Image
                             src={services.featured.image}
@@ -193,17 +193,17 @@ export default function ServicesSection() {
                                     className="h-full"
                                 >
                                     <div
-                                        className="group flex h-full min-h-[255px] flex-col rounded-[24px] border border-[#E8F0EB] bg-white p-6 shadow-[0_10px_35px_rgba(0,90,55,0.045)] transition-all duration-300 hover:-translate-y-2 hover:border-[#B8E5CA] hover:shadow-[0_20px_45px_rgba(0,90,55,0.12)] sm:p-7"
+                                        className="group flex h-full min-h-[225px] flex-col rounded-[24px] border border-[#E8F0EB] bg-white p-6 shadow-[0_10px_35px_rgba(0,90,55,0.045)] transition-all duration-300 hover:-translate-y-2 hover:border-[#B8E5CA] hover:shadow-[0_20px_45px_rgba(0,90,55,0.12)] sm:p-5 2xl:p-6"
                                     >
                                         {/* Icon box */}
-                                        <div className="mb-5 flex h-[60px] w-[80px] items-center justify-center rounded-[20px] bg-[#E9F8EF] text-[#008C45] transition-all duration-300 group-hover:bg-[#008C45] group-hover:text-white">
+                                        <div className="mb-3 flex h-[60px] w-[72px] items-center justify-center rounded-[20px] bg-[#E9F8EF] text-[#008C45] transition-all duration-300 group-hover:bg-[#008C45] group-hover:text-white">
                                             <Icon
                                                 sx={{ fontSize: 38 }}
                                             />
                                         </div>
 
                                         {/* Service title */}
-                                        <h3 className="font-montserrat text-[21px] font-bold leading-[1.2] tracking-[-0.025em] text-[#003D2C] sm:text-[23px]">
+                                        <h3 className="font-montserrat text-[19px] font-bold leading-[1.2] tracking-[-0.025em] text-[#003D2C] 2xl:text-[21px]">
                                             {service.title}
                                         </h3>
 

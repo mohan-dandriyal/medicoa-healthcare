@@ -6,7 +6,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
-// import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
+import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
 
 import { HeroSectionData } from "@/type/template.type";
 import { MainContainer, Paragraph } from "../layout/layout";
@@ -45,7 +45,7 @@ export default function HeroSection() {
 
             {/* Main container */}
             <MainContainer className="">
-                <div className="relative grid min-h-[680px] items-center lg:grid-cols-[47%_53%]">
+                <div className="relative grid min-h-[680px] items-center lg:grid-cols-[minmax(0,47fr)_minmax(0,53fr)]">
 
                     {/* LEFT CONTENT */}
                     <div className="relative z-20 pb-10 lg:pb-20 lg:pr-4 ">
@@ -56,7 +56,7 @@ export default function HeroSection() {
                             animate="visible"
                             variants={fadeUp}
                             transition={{ duration: 0.7, ease: EASE }}
-                            className="mb-8 flex items-center gap-4"
+                            className="sm:mb-8 mb-4 flex items-center gap-4 sm:mt-0 sm:mt-10 mt-10"
                         >
                             <span
                                 className="h-[3px] w-10 shrink-0 rounded-full sm:w-12"
@@ -80,7 +80,7 @@ export default function HeroSection() {
                                 delay: 0.12,
                                 ease: EASE,
                             }}
-                            className="font-poppins text-[clamp(42px,5.2vw,70px)] font-bold leading-[1.08] tracking-[-0.045em]"
+                            className="font-poppins text-[clamp(28px,5.2vw,70px)] font-bold leading-[1.08] tracking-[-0.045em]"
                         >
                             <span className="block break-words text-[#003E2B]">
                                 {hero.title.primary}
@@ -107,7 +107,7 @@ export default function HeroSection() {
                                 ease: EASE,
                             }}
                         >
-                            <Paragraph className="mt-7 max-w-[590px] text-sm sm:text-base xl:text-[19px]">
+                            <Paragraph className="sm:mt-7 mt-4 max-w-[590px] text-sm sm:text-base xl:text-[19px]">
                                 {hero.description}
                             </Paragraph>
                         </motion.div>
@@ -132,12 +132,9 @@ export default function HeroSection() {
                                 >
                                     {button.text}
 
-                                    {/* {button.icon === "arrow_forward" && (
-                  <ArrowForwardRoundedIcon
-                    sx={{ fontSize: 26 }}
-                    className="transition-transform duration-300 group-hover:translate-x-1"
-                  />
-                )} */}
+                                    {button.icon === "arrow_forward" && (
+                                        <ArrowForwardRoundedIcon aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1" />
+                                    )}
                                 </Link>
                             ))}
                         </motion.div>
@@ -147,7 +144,7 @@ export default function HeroSection() {
                     <motion.div
                         initial={{
                             opacity: 0,
-                            x: reduceMotion ? 0 : 80,
+                            x: 0,
                         }}
                         animate={{
                             opacity: 1,
@@ -157,7 +154,7 @@ export default function HeroSection() {
                             duration: 1.1,
                             ease: EASE,
                         }}
-                        className="relative z-10 h-[380px] w-full sm:h-[500px] lg:h-full lg:min-h-[680px]"
+                        className="relative z-10 h-[380px] min-w-0 w-full max-w-full overflow-hidden sm:h-[500px] lg:h-full lg:min-h-[680px]"
                     >
                         {/* Green curved border */}
                         <div className="absolute inset-0 overflow-hidden rounded-tl-[110px] bg-gradient-to-br from-[#00A75B] to-[#006B3C] p-[7px] sm:rounded-tl-[160px] lg:[clip-path:ellipse(94%_95%_at_100%_37%)] lg:rounded-none lg:p-0">

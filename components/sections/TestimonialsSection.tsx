@@ -191,16 +191,13 @@ export default function TestimonialsSection() {
       <MainContainer>
         <div
           id={testimonials.id}
-          className="relative grid items-center gap-8 lg:grid-cols-[0.8fr_2fr] lg:gap-10"
+          className="relative grid items-center gap-8 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,2fr)] lg:gap-10"
         >
           {/* ===================================
               LEFT DOCTOR IMAGE
           =================================== */}
           <motion.div
-            initial={{
-              opacity: 0,
-              x: reduceMotion ? 0 : -50,
-            }}
+            initial={false}
             whileInView={{
               opacity: 1,
               x: 0,
@@ -235,10 +232,7 @@ export default function TestimonialsSection() {
           <div className="min-w-0 overflow-hidden">
             {/* Section header */}
             <motion.div
-              initial={{
-                opacity: 0,
-                y: reduceMotion ? 0 : 25,
-              }}
+              initial={false}
               whileInView={{
                 opacity: 1,
                 y: 0,
@@ -255,7 +249,7 @@ export default function TestimonialsSection() {
               </SectionEyebrow>
 
               <div className="mt-5">
-                <SectionTitle className="text-[clamp(30px,3.2vw,52px)]">
+                <SectionTitle className="">
                   {testimonials.title.primary}{" "}
                   <SectionHighlight>
                     {testimonials.title.highlight}
@@ -272,10 +266,7 @@ export default function TestimonialsSection() {
                 SWIPER CAROUSEL
             =================================== */}
             <motion.div
-              initial={{
-                opacity: 0,
-                y: reduceMotion ? 0 : 35,
-              }}
+              initial={false}
               whileInView={{
                 opacity: 1,
                 y: 0,
@@ -286,7 +277,7 @@ export default function TestimonialsSection() {
                 delay: 0.15,
                 ease: EASE,
               }}
-              className="mt-10 min-w-0"
+              className="mt-8 min-w-0 overflow-hidden"
             >
               <Swiper
                 modules={[
@@ -327,7 +318,7 @@ export default function TestimonialsSection() {
                     spaceBetween: 20,
                   },
                 }}
-                className="!overflow-visible"
+                className="w-full min-w-0 !overflow-hidden !py-2"
               >
                 {testimonials.reviews.map((review, index) => (
                   <SwiperSlide

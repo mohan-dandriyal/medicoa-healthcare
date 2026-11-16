@@ -24,7 +24,7 @@ export default function CtaSection() {
     return (
         <section
             id={cta.id}
-            className="relative isolate overflow-hidden bg-[#FFFFFF] py-14 my-10"
+            className="relative isolate overflow-hidden bg-[#FFFFFF] sm:py-14 sm:my-10"
         >
 
             <MainContainer>
@@ -47,7 +47,7 @@ export default function CtaSection() {
                     <div className="grid min-h-[290px] grid-cols-1 md:grid-cols-[38%_62%]">
 
                         {/* LEFT BANNER IMAGE */}
-                        <div className="relative h-[240px]  bg-white md:h-auto md:min-h-[290px]">
+                        <div className="relative h-[240px] overflow-hidden bg-white md:h-auto md:min-h-[290px] md:rounded-r-[50%] md:border-r-[8px] md:border-white">
                             <div className="absolute inset-0 overflow-hidden  border-white ">
                                 <Image
                                     src={cta.image}

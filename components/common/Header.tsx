@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type MouseEvent } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 
 import { headerData } from "@/type/template.type";
+import { MainContainer } from "../layout/layout";
 
 const { brand, navigation, settings } = headerData;
 
@@ -54,6 +55,7 @@ function HeaderContent({ pathname }: { pathname: string }) {
     const [openDropdown, setOpenDropdown] = useState<string | null>(null);
     const [mobileDropdown, setMobileDropdown] = useState<string | null>(null);
     const [scrolled, setScrolled] = useState(false);
+    const [activeSectionHref, setActiveSectionHref] = useState<string | null>(null);
 
     const headerRef = useRef<HTMLElement>(null);
     const mobileToggleRef = useRef<HTMLButtonElement>(null);
@@ -71,6 +73,49 @@ function HeaderContent({ pathname }: { pathname: string }) {
 
         return () => window.removeEventListener("scroll", onScroll);
     }, []);
+
+    useEffect(() => {
+        const targets = navItems.flatMap((item) => [item, ...(item.children ?? [])]).flatMap((link) => {
+            const url = new URL(link.href, window.location.href);
+            if (url.origin !== location.origin || url.pathname !== pathname || !url.hash) return [];
+            try {
+                const element = document.getElementById(decodeURIComponent(url.hash.slice(1)));
+                return element ? [{ href: link.href, element }] : [];
+            } catch {
+                return [];
+            }
+        });
+        if (!targets.length) return;
+        let frame = 0;
+        const update = () => {
+            frame = 0;
+            const offset = (headerRef.current?.getBoundingClientRect().height ?? 0) + 24;
+            const ordered = targets.map((target) => ({ ...target, top: target.element.getBoundingClientRect().top }))
+                .sort((a, b) => a.top - b.top);
+            let active = ordered[0];
+            for (const target of ordered) {
+                if (target.top <= offset) active = target;
+            }
+            if (scrollY + innerHeight >= document.documentElement.scrollHeight - 2) active = ordered[ordered.length - 1];
+            setActiveSectionHref(active.href);
+        };
+        const schedule = () => {
+            if (!frame) frame = requestAnimationFrame(update);
+        };
+        schedule();
+        window.addEventListener("scroll", schedule, { passive: true });
+        window.addEventListener("resize", schedule);
+        const observer = new ResizeObserver(schedule);
+        const main = document.querySelector("main");
+        if (main) observer.observe(main);
+        if (headerRef.current) observer.observe(headerRef.current);
+        return () => {
+            cancelAnimationFrame(frame);
+            window.removeEventListener("scroll", schedule);
+            window.removeEventListener("resize", schedule);
+            observer.disconnect();
+        };
+    }, [pathname]);
 
     useEffect(() => {
         if (!mobileOpen) return;
@@ -122,6 +167,49 @@ function HeaderContent({ pathname }: { pathname: string }) {
             document.removeEventListener("pointerdown", onOutsideClick);
     }, []);
 
+    // Handle every same-page anchor click, including the hash already in the URL.
+    const handleSectionClick = (event: MouseEvent<HTMLElement>) => {
+        if (event.defaultPrevented || event.button !== 0 || event.metaKey ||
+            event.ctrlKey || event.shiftKey || event.altKey) return;
+
+        const link = (event.target as Element).closest<HTMLAnchorElement>("a[href]");
+        if (!link || link.hasAttribute("download") ||
+            (link.target && link.target !== "_self")) return;
+
+        const url = new URL(link.href, window.location.href);
+        if (url.origin !== window.location.origin ||
+            url.pathname !== window.location.pathname ||
+            url.search !== window.location.search || !url.hash) return;
+
+        let id: string;
+        try {
+            id = decodeURIComponent(url.hash.slice(1));
+        } catch {
+            return;
+        }
+        const section = document.getElementById(id);
+        if (!section) return;
+
+        event.preventDefault();
+        setMobileOpen(false);
+        setMobileDropdown(null);
+        setOpenDropdown(null);
+
+        if (window.location.hash !== url.hash) {
+            window.history.pushState(null, "", url.pathname + url.search + url.hash);
+        }
+
+        // Let the mobile menu release its body scroll lock before scrolling.
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                section.scrollIntoView({
+                    behavior: reduceMotion ? "instant" : "smooth",
+                    block: "start",
+                });
+            });
+        });
+    };
+
     const toggleDropdown = (id: string) => {
         setOpenDropdown((current) =>
             current === id ? null : id
@@ -134,13 +222,17 @@ function HeaderContent({ pathname }: { pathname: string }) {
         );
     };
 
+    const linkIsActive = (href: string) =>
+        href.includes("#") ? activeSectionHref === href : isActive(pathname, href);
+
     const itemIsActive = (item: NavItem) =>
-        isActive(pathname, item.href) ||
-        (item.children?.some((child) => isActive(pathname, child.href)) ?? false);
+        linkIsActive(item.href) ||
+        (item.children?.some((child) => linkIsActive(child.href)) ?? false);
 
     return (
         <header
             ref={headerRef}
+            onClickCapture={handleSectionClick}
             onKeyDown={(event) => {
                 if (event.key === "Escape" && openDropdown) {
                     headerRef.current?.querySelector<HTMLButtonElement>(
@@ -156,11 +248,11 @@ function HeaderContent({ pathname }: { pathname: string }) {
                     setMobileDropdown(null);
                 }
             }}
-            style={{
-                height: settings.headerHeight,
-            }}
+            // style={{
+            //     height: settings.headerHeight,
+            // }}
             className={[
-                "z-50 w-full bg-white transition-shadow duration-300 shadow shadow-gray-300",
+                "z-50 h-[var(--header-height)] [--header-height:72px] sm:[--header-height:80px] lg:[--header-height:96px] w-full shrink-0 bg-white transition-shadow duration-300 shadow shadow-gray-300",
                 settings.sticky ? "sticky top-0" : "relative",
                 scrolled ? "shadow-lg shadow-black/5" : "",
             ].join(" ")}
@@ -184,115 +276,117 @@ function HeaderContent({ pathname }: { pathname: string }) {
                 ))}
             </div>
 
-            <div className="relative mx-auto flex h-full max-w-[1400px] items-center justify-between gap-4 px-6 sm:px-8 lg:px-10">
-                {/* LOGO */}
-                <Link
-                    href={brand.href}
-                    onClick={() => setMobileOpen(false)}
-                    className="relative z-10 flex shrink-0 items-center pr-3 xl:pr-8 "
-                    aria-label={brand.name}
-                >
-                    <div className="a absolute right-0 w-0.5 h-[60%] bg-gray-200" />
-                    <Image
-                        src={brand.logo}
-                        alt={brand.logoAlt}
-                        width={350}
-                        height={90}
-                        preload
-                        sizes="(min-width: 1280px) 300px, (min-width: 640px) 230px, 190px"
-                        className="h-auto w-[160px] object-contain sm:w-[230px] xl:w-[300px]"
-                    />
-                </Link>
+            <MainContainer>
+                <div className="relative mx-auto flex h-[var(--header-height)] min-w-0 items-center justify-between gap-3">
+                    {/* LOGO */}
+                    <Link
+                        href={brand.href}
+                        onClick={() => setMobileOpen(false)}
+                        className="relative z-10 flex min-w-0 shrink-0 items-center pr-3 xl:pr-8"
+                        aria-label={brand.name}
+                    >
+                        <div aria-hidden="true" className="absolute right-0 hidden h-[60%] w-0.5 bg-gray-200 lg:block" />
+                        <Image
+                            src={brand.logo}
+                            alt={brand.logoAlt}
+                            width={350}
+                            height={90}
+                            preload
+                            sizes="(min-width: 1280px) 260px, (min-width: 640px) 230px, 160px"
+                            className="h-auto max-w-full rounded-xl w-[160px] object-contain sm:w-[230px] xl:w-[260px]"
+                        />
+                    </Link>
 
-                {/* DESKTOP NAVIGATION */}
-                <nav
-                    aria-label="Main navigation"
-                    className="hidden h-full items-center gap-1 lg:flex xl:gap-3 2xl:gap-6"
-                >
-                    {navItems.map((item) => {
-                        const active = itemIsActive(item);
-                        const opened = openDropdown === item.id;
+                    {/* DESKTOP NAVIGATION */}
+                    <nav
+                        aria-label="Main navigation"
+                        className="hidden h-full shrink-0 items-center gap-1 lg:flex xl:gap-2"
+                    >
+                        {navItems.map((item) => {
+                            const active = itemIsActive(item);
+                            const opened = openDropdown === item.id;
 
-                        return (
-                            <div
-                                key={item.id}
-                                className="relative flex h-full items-center"
-                            >
-                                <div className="relative flex h-full items-center">
-                                    <Link
-                                        href={item.href}
-                                        aria-current={pathname === item.href ? "page" : undefined}
-                                        onClick={() => setOpenDropdown(null)}
-                                        className={[
-                                            "relative font-montserrat flex h-full items-center whitespace-nowrap px-2 text-[14px] font-bold transition-colors duration-200 xl:px-3 xl:text-[17px]",
-                                            active
-                                                ? "text-[#087a39]"
-                                                : "text-[#111827] hover:text-[#087a39]",
-                                        ].join(" ")}
-                                    >
-                                        {item.label}
-
-                                        {active && (
-                                            <motion.span
-                                                layoutId="desktop-active-link"
-                                                className="absolute bottom-[26px] left-2 right-2 h-1 rounded-full nav-active-link xl:left-3 xl:right-3"
-                                                transition={{
-                                                    duration: reduceMotion ? 0 : 0.3,
-                                                    ease,
-                                                }}
-                                            />
-                                        )}
-                                    </Link>
-
-                                    {!!item.children?.length && (
-                                        <button
-                                            type="button"
-                                            aria-label={`Toggle ${item.label} submenu`}
-                                            aria-expanded={opened}
-                                            aria-controls={`desktop-menu-${item.id}`}
-                                            onClick={() => toggleDropdown(item.id)}
-                                            className="flex h-9 w-7 items-center justify-center rounded text-[#087a39] hover:bg-green-50"
+                            return (
+                                <div
+                                    key={item.id}
+                                    className="relative flex h-full items-center"
+                                >
+                                    <div className="relative flex h-full items-center">
+                                        <Link
+                                            href={item.href}
+                                            aria-current={active ? (item.href.includes("#") ? "location" : "page") : undefined}
+                                            onClick={() => setOpenDropdown(null)}
+                                            className={[
+                                                "relative font-montserrat flex h-full items-center whitespace-nowrap px-1 text-[14px] font-semibold transition-colors duration-200 xl:px-3 xl:text-[15px]",
+                                                active
+                                                    ? "text-[#087a39]"
+                                                    : "text-[#111827] hover:text-[#087a39]",
+                                            ].join(" ")}
                                         >
-                                            <ChevronDown size={16} className={opened ? "rotate-180" : ""} />
-                                        </button>
+                                            {item.label}
+
+                                            {active && (
+                                                <motion.span
+                                                    layoutId="desktop-active-link"
+                                                    className="absolute bottom-5 left-2 right-2 h-[2px] rounded-full nav-active-link xl:left-3 xl:right-3"
+                                                    transition={{
+                                                        duration: reduceMotion ? 0 : 0.3,
+                                                        ease,
+                                                    }}
+                                                />
+                                            )}
+                                        </Link>
+
+                                        {!!item.children?.length && (
+                                            <button
+                                                type="button"
+                                                aria-label={`Toggle ${item.label} submenu`}
+                                                aria-expanded={opened}
+                                                aria-controls={`desktop-menu-${item.id}`}
+                                                onClick={() => toggleDropdown(item.id)}
+                                                className="flex h-9 w-7 items-center justify-center rounded text-[#087a39] hover:bg-green-50"
+                                            >
+                                                <ChevronDown size={16} className={opened ? "rotate-180" : ""} />
+                                            </button>
+                                        )}
+                                    </div>
+                                    {opened && !!item.children?.length && (
+                                        <div id={`desktop-menu-${item.id}`} className="absolute right-0 top-full z-50 min-w-56 rounded-b-xl border border-green-100 bg-white p-2 shadow-lg">
+                                            {item.children.map((child) => (
+                                                <Link
+                                                    key={child.href}
+                                                    href={child.href}
+                                                    aria-current={linkIsActive(child.href) ? (child.href.includes("#") ? "location" : "page") : undefined}
+                                                    onClick={() => setOpenDropdown(null)}
+                                                    className={`block rounded-lg px-4 py-3 text-sm hover:bg-green-50 ${linkIsActive(child.href) ? "font-semibold text-[#087a39]" : "text-slate-700"}`}
+                                                >
+                                                    {child.label}
+                                                </Link>
+                                            ))}
+                                        </div>
                                     )}
                                 </div>
-                                {opened && !!item.children?.length && (
-                                    <div id={`desktop-menu-${item.id}`} className="absolute left-0 top-full z-50 min-w-56 rounded-b-xl border border-green-100 bg-white p-2 shadow-lg">
-                                        {item.children.map((child) => (
-                                            <Link
-                                                key={child.href}
-                                                href={child.href}
-                                                aria-current={pathname === child.href ? "page" : undefined}
-                                                onClick={() => setOpenDropdown(null)}
-                                                className={`block rounded-lg px-4 py-3 text-sm hover:bg-green-50 ${isActive(pathname, child.href) ? "font-semibold text-[#087a39]" : "text-slate-700"}`}
-                                            >
-                                                {child.label}
-                                            </Link>
-                                        ))}
-                                    </div>
-                                )}
-                            </div>
-                        );
-                    })}
-                </nav>
+                            );
+                        })}
+                    </nav>
 
-                {/* MOBILE TOGGLE */}
-                <button
-                    ref={mobileToggleRef}
-                    type="button"
-                    aria-label={mobileOpen ? "Close menu" : "Open menu"}
-                    aria-expanded={mobileOpen}
-                    aria-controls="mobile-navigation"
-                    onClick={() => {
-                        setMobileOpen((value) => !value);
-                        setMobileDropdown(null);
-                    }}
-                    className="relative z-50 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-green-100 bg-green-50 text-[#087a39] transition-colors hover:bg-green-100 lg:hidden"
-                >
-                    {mobileOpen ? <X size={25} /> : <Menu size={25} />}
-                </button>
-            </div>
+                    {/* MOBILE TOGGLE */}
+                    <button
+                        ref={mobileToggleRef}
+                        type="button"
+                        aria-label={mobileOpen ? "Close menu" : "Open menu"}
+                        aria-expanded={mobileOpen}
+                        aria-controls="mobile-navigation"
+                        onClick={() => {
+                            setMobileOpen((value) => !value);
+                            setMobileDropdown(null);
+                        }}
+                        className="relative z-50 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-green-100 bg-green-50 text-[#087a39] transition-colors hover:bg-green-100 lg:hidden"
+                    >
+                        {mobileOpen ? <X size={25} /> : <Menu size={25} />}
+                    </button>
+                </div>
+            </MainContainer>
 
 
             {/* MOBILE NAVIGATION */}
@@ -308,7 +402,7 @@ function HeaderContent({ pathname }: { pathname: string }) {
                             exit={{ opacity: 0 }}
                             onClick={() => setMobileOpen(false)}
                             transition={{ duration: reduceMotion ? 0 : 0.2 }}
-                            style={{ top: settings.sticky ? settings.headerHeight : 0 }}
+                            style={{ top: "var(--header-height)" }}
                             className="fixed inset-0 z-30 bg-black/40 lg:hidden"
                         />
 
@@ -331,7 +425,7 @@ function HeaderContent({ pathname }: { pathname: string }) {
                                 duration: reduceMotion ? 0 : 0.3,
                                 ease,
                             }}
-                            style={{ maxHeight: `calc(100dvh - ${settings.headerHeight}px)` }}
+                            style={{ maxHeight: "calc(100dvh - var(--header-height))" }}
                             className="absolute right-0 top-full z-40 w-full max-w-[420px] overflow-y-auto overscroll-contain border-t border-green-100 bg-white p-5 shadow-2xl lg:hidden"
                         >
                             <div className="space-y-2">
@@ -352,7 +446,7 @@ function HeaderContent({ pathname }: { pathname: string }) {
                                             >
                                                 <Link
                                                     href={item.href}
-                                                    aria-current={pathname === item.href ? "page" : undefined}
+                                                    aria-current={active ? (item.href.includes("#") ? "location" : "page") : undefined}
                                                     onClick={() => setMobileOpen(false)}
                                                     className="flex-1 px-4 py-3.5 text-[15px] font-semibold"
                                                 >
@@ -405,11 +499,11 @@ function HeaderContent({ pathname }: { pathname: string }) {
                                                                 <Link
                                                                     key={child.href}
                                                                     href={child.href}
-                                                                    aria-current={pathname === child.href ? "page" : undefined}
+                                                                    aria-current={linkIsActive(child.href) ? (child.href.includes("#") ? "location" : "page") : undefined}
                                                                     onClick={() => setMobileOpen(false)}
                                                                     className={[
                                                                         "block rounded-lg px-3 py-2.5 text-sm transition-colors",
-                                                                        isActive(pathname, child.href)
+                                                                        linkIsActive(child.href)
                                                                             ? "bg-green-50 font-semibold text-[#087a39]"
                                                                             : "text-slate-600 hover:bg-green-50 hover:text-[#087a39]",
                                                                     ].join(" ")}

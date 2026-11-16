@@ -49,10 +49,7 @@ export default function ProductsSection() {
             <MainContainer>
 
                 <motion.div
-                    initial={{
-                        opacity: 0,
-                        y: reduceMotion ? 0 : 25,
-                    }}
+                    initial={false}
                     whileInView={{
                         opacity: 1,
                         y: 0,
@@ -62,7 +59,7 @@ export default function ProductsSection() {
                         duration: reduceMotion ? 0 : 0.7,
                         ease: EASE,
                     }}
-                    className="mx-auto mb-12 max-w-[950px] text-center"
+                    className="mx-auto mb-8 sm:mb-10 max-w-[950px] text-center"
                 >
 
 
@@ -100,10 +97,7 @@ export default function ProductsSection() {
                         return (
                             <motion.article
                                 key={item.id}
-                                initial={{
-                                    opacity: 0,
-                                    y: reduceMotion ? 0 : 40,
-                                }}
+                                initial={false}
                                 whileInView={{
                                     opacity: 1,
                                     y: 0,

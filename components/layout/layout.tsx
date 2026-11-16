@@ -20,8 +20,8 @@ export const MainContainer = ({
   className = "",
 }: ComponentProps) => {
   return (
-    <div className="px-4 sm:px-6 md:px-8 lg:px-10">
-      <div className={`mx-auto min-w-0 max-w-[1500px] ${className}`}>
+    <div className="px-4 sm:px-6 md:px-8 lg:px-10 ">
+      <div className={`mx-auto min-w-0 max-w-[1400px] ${className}`}>
         {children}
       </div>
     </div>
@@ -37,7 +37,7 @@ export const Section = ({
   className = "",
 }: ComponentProps) => {
   return (
-    <section className={`relative w-full ${className}`}>
+    <section className={`relative flow-root w-full ${className}`}>
       {children}
     </section>
   );
@@ -56,8 +56,9 @@ export const SectionTitle = ({
       className={`
         font-montserrat
         my-4
-        text-[clamp(30px,3.8vw,56px)]
-        font-extrabold
+        text-[clamp(24px,3.2vw,48px)]
+        font-bold
+        sm:font-extrabold
         leading-[1.17]
         tracking-[-0.035em]
         text-[#003E2B]
@@ -134,10 +135,10 @@ export const Paragraph = ({
       className={`
         font-poppins
         text-sm
-        font-medium
+        font-normal
         leading-[1.5]
-        text-[#555B5A]
-        sm:text-lg
+        text-[#555B5A]/80
+        sm:text-base
         ${className}
       `}
     >

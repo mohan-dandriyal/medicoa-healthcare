@@ -73,7 +73,7 @@ function TeamCard({ member }: { member: Member }) {
       </div>
 
       {/* Information panel */}
-      <div className="relative -top-5 flex flex-1 flex-col items-center rounded-t-[24px] bg-[white] px-4 pb-3 pt-8 text-center ">
+      <div className="relative -mt-5 flex flex-1 flex-col items-center rounded-t-[24px] bg-[white] px-4 pb-3 pt-8 text-center ">
         {/* Specialty icon */}
         <div className="absolute -top-10 right-5 flex h-[70px] w-[70px] items-center justify-center rounded-full border-[7px] border-white bg-[#29BD78] text-white shadow-sm">
           <Icon sx={{ fontSize: 29 }} />
@@ -146,15 +146,15 @@ export default function TeamSection() {
               duration: reduceMotion ? 0 : 0.7,
               ease: EASE,
             }}
-            className="mx-auto mb-12 max-w-[1000px] text-center"
+            className="mx-auto mb-8 sm:mb-10 max-w-[1000px] text-center"
           >
             <SectionEyebrow>
               <GroupsRounded sx={{ fontSize: 23 }} />
               {team.eyebrow}
             </SectionEyebrow>
 
-            <div className="mt-5 ">
-              <SectionTitle>
+            <div>
+                        <SectionTitle>
                 {team.title.primary}{" "}
                 <SectionHighlight>
                   {team.title.highlight}

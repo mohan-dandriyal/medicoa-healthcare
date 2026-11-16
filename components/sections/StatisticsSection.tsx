@@ -99,7 +99,7 @@ export default function StatisticsSection() {
 
     return (
         <Section
-            className="isolate overflow-hidden bg-[#f3f9f9] py-14 my-10"
+            className="isolate overflow-hidden bg-[#f3f9f9] py-14 sm:my-10"
         >
             {/* Decorative background circles */}
             {/* Decorative background shapes */}
@@ -109,10 +109,7 @@ export default function StatisticsSection() {
             <MainContainer>
                 <motion.div
                     id={statistics.id}
-                    initial={{
-                        opacity: 0,
-                        y: reduceMotion ? 0 : 35,
-                    }}
+                    initial={false}
                     whileInView={{
                         opacity: 1,
                         y: 0,
@@ -136,10 +133,7 @@ export default function StatisticsSection() {
                             return (
                                 <motion.div
                                     key={item.id}
-                                    initial={{
-                                        opacity: 0,
-                                        y: reduceMotion ? 0 : 25,
-                                    }}
+                                    initial={false}
                                     whileInView={{
                                         opacity: 1,
                                         y: 0,

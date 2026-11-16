@@ -45,7 +45,7 @@ export default function Footer() {
                                     alt={footer.logo.alt}
                                     width={360}
                                     height={110}
-                                    className="h-auto max-w-full w-[250px] object-contain sm:w-[340px]"
+                                    className="h-auto max-w-full w-[160px] object-contain sm:w-[230px] xl:w-[260px]"
                                 />
                             </Link>
 

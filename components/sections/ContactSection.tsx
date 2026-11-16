@@ -102,25 +102,22 @@ export default function ContactSection() {
                 <div id={contact.id} className="relative">
                     {/* SECTION HEADING */}
                     <motion.div
-                        initial={{
-                            opacity: 0,
-                            y: reduceMotion ? 0 : 25,
-                        }}
+                        initial={false}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{
                             duration: reduceMotion ? 0 : 0.7,
                             ease: EASE,
                         }}
-                        className="mx-auto mb-12 max-w-[900px] text-center"
+                        className="mx-auto mb-8 sm:mb-10 max-w-[900px] text-center"
                     >
                         <SectionEyebrow>
                             <EmailOutlined sx={{ fontSize: 20 }} />
                             {contact.eyebrow}
                         </SectionEyebrow>
 
-                        <div className="mt-5">
-                            <SectionTitle>
+                        <div>
+                        <SectionTitle>
                                 {contact.title.primary}{" "}
                                 <SectionHighlight>
                                     {contact.title.highlight}
@@ -134,20 +131,17 @@ export default function ContactSection() {
                     </motion.div>
 
                     {/* CONTACT GRID */}
-                    <div className="grid items-stretch gap-6 lg:grid-cols-[1.2fr_0.9fr]">
+                    <div className="grid items-stretch gap-6 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.9fr)]">
                         {/* LEFT CONTACT FORM */}
                         <motion.div
-                            initial={{
-                                opacity: 0,
-                                x: reduceMotion ? 0 : -35,
-                            }}
+                            initial={false}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{
                                 duration: reduceMotion ? 0 : 0.7,
                                 ease: EASE,
                             }}
-                            className="rounded-[26px] border border-[#E8EEEA] bg-white p-6 shadow-[0_12px_35px_rgba(0,60,40,0.07)] sm:p-8"
+                            className="min-w-0 rounded-[26px] border border-[#E8EEEA] bg-white p-6 shadow-[0_12px_35px_rgba(0,60,40,0.07)] sm:p-8"
                         >
                             <form onSubmit={handleSubmit}>
                                 {/* DYNAMIC INPUT FIELDS */}
@@ -200,7 +194,7 @@ export default function ContactSection() {
                                         aria-label={contact.form.messagePlaceholder}
                                         required
                                         rows={5}
-                                        className="w-full resize-y bg-transparent font-poppins text-sm text-[#18333A] outline-none placeholder:text-[#69747B]"
+                                        className="min-w-0 w-full resize-y bg-transparent font-poppins text-sm text-[#18333A] outline-none placeholder:text-[#69747B]"
                                     />
                                 </label>
 
@@ -223,17 +217,14 @@ export default function ContactSection() {
 
                         {/* RIGHT CONTACT INFORMATION */}
                         <motion.div
-                            initial={{
-                                opacity: 0,
-                                x: reduceMotion ? 0 : 35,
-                            }}
+                            initial={false}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{
                                 duration: reduceMotion ? 0 : 0.7,
                                 ease: EASE,
                             }}
-                            className="overflow-hidden relative rounded-[26px] border border-[#E8EEEA] bg-white shadow-[0_12px_35px_rgba(0,60,40,0.07)]"
+                            className="min-w-0 overflow-hidden relative rounded-[26px] border border-[#E8EEEA] bg-white shadow-[0_12px_35px_rgba(0,60,40,0.07)]"
                         >
                             {/* Curved green accent */}
 

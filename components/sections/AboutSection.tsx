@@ -50,7 +50,7 @@ export default function AboutSection() {
     return (
         <section
             id={about.id}
-            className="relative isolate overflow-hidden bg-[#FAFFFC] py-14"
+            className="relative isolate overflow-hidden bg-[#FAFFFC] py-14 my-10"
             style={{
                 backgroundImage : `url(/other/about-bg.png)`,
                 backgroundRepeat : "no-repeat",
@@ -61,15 +61,6 @@ export default function AboutSection() {
             
             <div />
 
-            {/* <div
-                aria-hidden="true"
-                className="pointer-events-none absolute -right-40 top-28 h-[420px] w-[420px] rounded-full bg-[#EFFAF4]"
-            /> */}
-
-
-            {/* Decorative background shapes */}
-            {/* <DecorativebackgroundTopLeft className="w-[380px] h-[500px] -top-84" /> */}
-
             <MainContainer>
                 {/* SECTION HEADING */}
                 <motion.div
@@ -78,7 +69,7 @@ export default function AboutSection() {
                     viewport={{ once: true, amount: 0.2 }}
                     variants={animation}
                     transition={{ duration: 0.7, ease: EASE }}
-                    className="mx-auto mb-12 max-w-[1050px] text-center"
+                    className="mx-auto mb-8 sm:mb-10 max-w-[1050px] text-center"
                 >
                     <SectionEyebrow>
                         <LocalHospitalRounded sx={{ fontSize: 22 }} />
@@ -89,7 +80,7 @@ export default function AboutSection() {
                     </SectionEyebrow>
 
                     {/* Title */}
-                    <div className="mt-5">
+                    <div>
                         <SectionTitle>
                             {about.title.primary} {" "}
                             <SectionHighlight>

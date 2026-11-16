@@ -11,44 +11,36 @@ import StatisticsSection from "@/components/sections/StatisticsSection";
 import TeamSection from "@/components/sections/TeamSection";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import WhyChooseUsSection from "@/components/sections/WhyChooseUsSection";
+import { Suspense } from "react";
 
-export default function Home() {
+ function HomePageSections() {
   return (
     <>
       <Header />
 
-      <HeroSection />
-
-      <div className="bg-[#f6fafabf] mt-12">
-
+      <main className="flow-root shrink-0">
+        <HeroSection />
         <AboutSection />
-      </div>
-
-      <div className="mt-12">
         <ServicesSection />
-      </div>
-
-      <div className="mt-12">
         <WhyChooseUsSection />
-      </div>
-
-      <div className="mt-12">
-      <StatisticsSection />
-      </div>
-
-      <TestimonialsSection />
-
-      <TeamSection />
-
-      <FAQSection />
-
-      <CtaSection />
-
-      <ProductsSection />
-
-      <ContactSection />
-
+        <StatisticsSection />
+        <TestimonialsSection />
+        <TeamSection />
+        <FAQSection />
+        <CtaSection />
+        <ProductsSection />
+        <ContactSection />
+      </main>
       <Footer />
     </>
   );
+}
+
+
+export default function Home() {
+  return(
+    <Suspense>
+      <HomePageSections  />
+    </Suspense>
+  )
 }

@@ -23,6 +23,7 @@ import {
     MainContainer,
     Section,
     SectionTitle,
+    SectionEyebrow,
     SectionHighlight,
     Paragraph,
 } from "@/components/layout/layout";
@@ -166,9 +167,12 @@ export default function FAQSection() {
                             duration: reduceMotion ? 0 : 0.7,
                             ease: EASE,
                         }}
-                        className="mx-auto mb-12 max-w-[1000px] text-center"
+                        className="mx-auto mb-8 sm:mb-10 max-w-[1000px] text-center"
                     >
-                        <SectionTitle className="">
+                        <SectionEyebrow>
+                            <QuestionAnswerOutlined sx={{ fontSize: 20 }} /> FAQs
+                        </SectionEyebrow>
+                        <SectionTitle>
                             {faq.title.primary}{" "}
                             <SectionHighlight>
                                 {faq.title.highlight}
@@ -217,9 +221,9 @@ export default function FAQSection() {
                             {/* Overlapping contact card */}
                             <Link
                                 href={faq.contactCard.link}
-                                className="absolute bottom-0 left-[7%] right-[7%] flex items-center gap-4 rounded-[24px] bg-white px-5 py-5 shadow-[0_15px_45px_rgba(0,80,50,0.13)] transition-transform duration-300 hover:-translate-y-1 sm:px-7"
+                                className="absolute bottom-0 left-[7%] right-[7%] flex items-center gap-3 rounded-[24px] bg-white px-5 py-5 shadow-[0_15px_45px_rgba(0,80,50,0.13)] transition-transform duration-300 hover:-translate-y-1 sm:px-7"
                             >
-                                <span className="flex h-[64px] w-[64px] shrink-0 items-center justify-center rounded-[18px] bg-[#E7F8EE] text-[#008B4B]">
+                                <span className="flex h-12 w-12 sm:h-16 sm:w-16 shrink-0 items-center justify-center rounded-[18px] bg-[#E7F8EE] text-[#008B4B]">
                                     <QuestionAnswerOutlined sx={{ fontSize: 34 }} />
                                 </span>
 

@@ -13,14 +13,14 @@
       "address": {
         "title": "Our Address",
         "lines": [
-          "123 Wellness Street,",
-          "New Delhi, India - 110001"
+          "3170 Rosewood Lane Unit 200, ",
+          " Beverly Hills, CA 90210,"
         ]
       },
       "contact": {
         "title": "Contact Us",
-        "phone": "+91 98765 43210",
-        "email": "support@medicoahealth.com"
+        "phone": "+1 00000 00000",
+        "email": "info@xyz.com"
       },
       "socials": [
         {
@@ -66,7 +66,7 @@
           "href": "#contact"
         }
       ],
-      "copyright": " © 2026 MedicoA. All Rights Reserved."
+      "copyright": " © 2026 MedicoA. All Rights Reserved. Powered by Lestow."
     }
   },
   "categories": {
@@ -86,35 +86,57 @@
                 {
                   "id": "home",
                   "label": "Home",
-                  "href": "/",
+                  "href": "#home",
                   "children": []
                 },
                 {
                   "id": "about",
                   "label": "About Us",
-                  "href": "/about",
+                  "href": "#about",
                   "children": []
                 },
                 {
                   "id": "services",
                   "label": "Services",
-                  "href": "/services"
+                  "href": "#services"
                 },
-                {
-                  "id": "products",
-                  "label": "Products",
-                  "href": "/products"
+
+                 {
+                  "id": "why-choose-us",
+                  "label": "Why Choose",
+                  "href": "#why-choose-us",
+                  "children": []
                 },
+
+                 {
+                  "id": "testimonials",
+                  "label": "Testimonials",
+                  "href": "#testimonials",
+                  "children": []
+                },
+
+               
                 {
                   "id": "team",
                   "label": "Our Team",
-                  "href": "/team",
+                  "href": "#team",
                   "children": []
+                },
+                {
+                  "id": "faq",
+                  "label": "Faq",
+                  "href": "#faq",
+                  "children": []
+                },
+                 {
+                  "id": "products",
+                  "label": "Products",
+                  "href": "#products"
                 },
                 {
                   "id": "contact",
                   "label": "Contact Us",
-                  "href": "/contact",
+                  "href": "#contact",
                   "children": []
                 }
               ],
@@ -151,7 +173,7 @@
                   "alt": "Pharmacist assisting a customer at MedicoA pharmacy"
                 },
                 "products": {
-                  "src": "/other/hero-2.webp",
+                  "src": "/other/hero-3.png",
                   "alt": "Healthcare and pharmaceutical products"
                 }
               },
@@ -638,21 +660,21 @@
                 "items": [
                   {
                     "title": "Our Location",
-                    "value": "123 Wellness Street, New Delhi, India - 110001",
+                    "value": "3170 Rosewood Lane Unit 200, Beverly Hills, CA 90210",
                     "icon": "location",
                     "href": ""
                   },
                   {
                     "title": "Email Us",
-                    "value": "info@pharmacycare.com",
+                    "value": "info@xyz.com",
                     "icon": "email",
-                    "href": "mailto:info@pharmacycare.com"
+                    "href": "mailto:info@xyz.com"
                   },
                   {
                     "title": "Call Us",
-                    "value": "+91 98765 43210",
+                    "value": "+1 00000 00000",
                     "icon": "phone",
-                    "href": "tel:+919876543210"
+                    "href": "tel:+100000 00000"
                   }
                 ]
               }
