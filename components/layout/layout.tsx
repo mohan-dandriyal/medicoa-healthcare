@@ -58,7 +58,7 @@ export const SectionTitle = ({
         my-4
         text-[clamp(24px,3.2vw,48px)]
         font-bold
-        sm:font-extrabold
+        sm:font-bold
         leading-[1.17]
         tracking-[-0.035em]
         text-[#003E2B]
