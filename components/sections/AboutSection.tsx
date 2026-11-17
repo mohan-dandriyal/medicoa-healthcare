@@ -69,7 +69,7 @@ export default function AboutSection() {
                     viewport={{ once: true, amount: 0.2 }}
                     variants={animation}
                     transition={{ duration: 0.7, ease: EASE }}
-                    className="mx-auto mb-8 sm:mb-10 max-w-[1050px] text-center"
+                    className="mx-auto mb-8 sm:mb-10 max-w-[500px] lg:max-w-[800px] text-center"
                 >
                     <SectionEyebrow>
                         <LocalHospitalRounded sx={{ fontSize: 22 }} />

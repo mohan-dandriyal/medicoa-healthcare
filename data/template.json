@@ -7,7 +7,8 @@
     "Footer": {
       "logo": {
         "src": "/main logo/footerLogo.png",
-        "alt": "MedicoA Healthcare and Pharmaceuticals"
+        "alt": "MedicoA Healthcare and Pharmaceuticals",
+        "href" : "#home"
       },
       "description": "Your trusted partner for quality medicines, healthcare essentials, and wellness products, committed to better health and well-being for every family.",
       "address": {
@@ -54,17 +55,34 @@
           "href": "#about"
         },
         {
-          "label": "Products",
-          "href": "#products"
-        },
-        {
           "label": "Services",
           "href": "#services"
+        },
+        {
+          "label": "Why Choose",
+          "href": "#why-choose-us"
+        },
+        {
+          "label": "Testimonials",
+          "href": "#testimonials"
+        },
+        {
+          "label": "Our Team",
+          "href": "#team"
+        },
+        {
+          "label": "Faq",
+          "href": "#faq"
+        },
+                {
+          "label": "Products",
+          "href": "#products"
         },
         {
           "label": "Contact Us",
           "href": "#contact"
         }
+        
       ],
       "copyright": " © 2026 MedicoA. All Rights Reserved. Powered by Lestow."
     }
@@ -162,7 +180,7 @@
                 {
                   "id": "contact",
                   "text": "Contact Us",
-                  "href": "/contact",
+                  "href": "#contact",
                   "icon": "arrow_forward",
                   "variant": "primary"
                 }

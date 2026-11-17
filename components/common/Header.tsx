@@ -425,8 +425,8 @@ function HeaderContent({ pathname }: { pathname: string }) {
                                 duration: reduceMotion ? 0 : 0.3,
                                 ease,
                             }}
-                            style={{ maxHeight: "calc(100dvh - var(--header-height))" }}
-                            className="absolute right-0 top-full z-40 w-full max-w-[420px] overflow-y-auto overscroll-contain border-t border-green-100 bg-white p-5 shadow-2xl lg:hidden"
+                            style={{ maxHeight: "min-h-[50vh]" }}
+                            className="absolute right-0 top-full z-40 w-full max-w-[420px] overflow-y-auto border-t border-green-100 bg-white p-5 shadow-2xl lg:hidden"
                         >
                             <div className="space-y-2">
                                 {navItems.map((item) => {

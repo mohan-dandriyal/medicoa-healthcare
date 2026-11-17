@@ -39,7 +39,7 @@ export default function Footer() {
                     <div className="grid gap-10 lg:grid-cols-[1.4fr_0.65fr_0.8fr] lg:gap-12">
                         {/* BRAND */}
                         <div>
-                            <Link href="/" className="inline-block">
+                            <Link href={footer.logo.href} className="inline-block">
                                 <Image
                                     src={footer.logo.src}
                                     alt={footer.logo.alt}
@@ -142,13 +142,13 @@ export default function Footer() {
                     <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
                         <nav
                             aria-label="Footer navigation"
-                            className="flex flex-wrap items-center gap-x-7 gap-y-3"
+                            className="flex flex-wrap items-center sm:gap-x-7 gap-x-4 gap-y-3"
                         >
                             {footer.links.map((link) => (
                                 <Link
                                     key={link.label}
                                     href={link.href}
-                                    className="font-poppins text-sm font-medium text-white transition-colors hover:text-[#A8EB00]"
+                                    className="font-poppins sm:border-0 border-r sm:pr-0 pr-4 text-sm font-medium text-white transition-colors hover:text-[#A8EB00]"
                                 >
                                     {link.label}
                                 </Link>
