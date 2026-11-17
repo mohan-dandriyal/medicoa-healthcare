@@ -248,9 +248,6 @@ function HeaderContent({ pathname }: { pathname: string }) {
                     setMobileDropdown(null);
                 }
             }}
-            // style={{
-            //     height: settings.headerHeight,
-            // }}
             className={[
                 "z-50 h-[var(--header-height)] [--header-height:72px] sm:[--header-height:80px] lg:[--header-height:96px] w-full shrink-0 bg-white transition-shadow duration-300 shadow shadow-gray-300",
                 settings.sticky ? "sticky top-0" : "relative",
@@ -281,7 +278,7 @@ function HeaderContent({ pathname }: { pathname: string }) {
                     {/* LOGO */}
                     <Link
                         href={brand.href}
-                        onClick={() => setMobileOpen(false)}
+                        onClick={() => {setMobileOpen(false), setOpenDropdown(null)}}
                         className="relative z-10 flex min-w-0 shrink-0 items-center pr-3 xl:pr-8"
                         aria-label={brand.name}
                     >
@@ -317,7 +314,7 @@ function HeaderContent({ pathname }: { pathname: string }) {
                                             aria-current={active ? (item.href.includes("#") ? "location" : "page") : undefined}
                                             onClick={() => setOpenDropdown(null)}
                                             className={[
-                                                "relative font-montserrat flex h-full items-center whitespace-nowrap px-1 text-[14px] font-semibold transition-colors duration-200 xl:px-3 xl:text-[15px]",
+                                                "relative font-montserrat flex items-center whitespace-nowrap px-1 text-[14px] font-semibold transition-colors duration-200 xl:px-3 xl:text-[15px]",
                                                 active
                                                     ? "text-[#087a39]"
                                                     : "text-[#111827] hover:text-[#087a39]",
@@ -328,7 +325,7 @@ function HeaderContent({ pathname }: { pathname: string }) {
                                             {active && (
                                                 <motion.span
                                                     layoutId="desktop-active-link"
-                                                    className="absolute bottom-5 left-2 right-2 h-[2px] rounded-full nav-active-link xl:left-3 xl:right-3"
+                                                    className="absolute -bottom-2 left-2 right-2 h-[2px] rounded-full nav-active-link xl:left-3 xl:right-3"
                                                     transition={{
                                                         duration: reduceMotion ? 0 : 0.3,
                                                         ease,
