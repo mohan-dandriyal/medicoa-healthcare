@@ -108,11 +108,10 @@ export default function TeamSection() {
 
   const total = team.members.length;
   const canNavigate = total > visibleSlides;
-  const pageCount = Math.max(1, total - visibleSlides + 1);
+  const loop = team.settings.loop && total > 4;
+  const pageCount = loop ? total : Math.max(1, total - visibleSlides + 1);
 
-  const currentPage = team.settings.loop && canNavigate
-    ? activeIndex % pageCount
-    : Math.min(activeIndex, pageCount - 1);
+  const currentPage = Math.min(activeIndex, pageCount - 1);
 
   const syncSwiper = (swiper: SwiperType) => {
     setActiveIndex(swiper.realIndex);
@@ -124,7 +123,7 @@ export default function TeamSection() {
   };
 
   return (
-    <Section className="isolate overflow-hidden bg-[#FAFFFC] py-14 my-10">
+    <Section className="isolate overflow-hidden bg-[#FAFFFC] mb-10 mt-4 pb-14 pt-8 sm:mt-10 sm:pt-14">
       {/* Background shapes */}
        {/* Decorative background shapes */}
                   <DecorativebackgroundTopLeft className="" />
@@ -191,7 +190,7 @@ export default function TeamSection() {
               slidesPerView={1}
               spaceBetween={20}
               speed={team.settings.speed}
-              loop={team.settings.loop && total > 4}
+              loop={loop}
               autoplay={
                 team.settings.autoplay && !reduceMotion && total > 1
                   ? {

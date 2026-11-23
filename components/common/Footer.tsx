@@ -13,6 +13,7 @@ import {
     LocationOnRounded,
     PhoneInTalkRounded,
     EmailOutlined,
+    Link as LinkIcon,
 } from "@mui/icons-material";
 
 import type { SvgIconComponent } from "@mui/icons-material";
@@ -32,7 +33,7 @@ const SOCIAL_ICONS: Record<string, SvgIconComponent> = {
 
 export default function Footer() {
     return (
-        <footer className="bg-white py-8">
+        <footer className="bg-white pb-10">
             <MainContainer>
                 <div className="overflow-hidden rounded-[24px] bg-gradient-to-br from-[#005E42] via-[#006B48] to-[#004C37] px-6 py-10 text-white sm:px-10 lg:px-12">
                     {/* TOP FOOTER */}
@@ -139,16 +140,23 @@ export default function Footer() {
                     <div className="my-8 h-[2px] w-full bg-[#A8EB00]" />
 
                     {/* BOTTOM FOOTER */}
-                    <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+                    <div className="flex flex-col gap-3 sm:gap-6 lg:flex-row lg:items-center lg:justify-between">
+                        <h3 className="sm:hidden flex items-center gap-3 font-montserrat text-lg font-bold">
+                             <LinkIcon
+                                    sx={{ fontSize: 28 }}
+                                    className="text-[#A8EB00]"
+                                />
+                            Quick Links
+                        </h3>
                         <nav
                             aria-label="Footer navigation"
-                            className="flex flex-wrap items-center sm:gap-x-7 gap-x-4 gap-y-3"
+                            className="grid grid-cols-2 gap-x-4 sm:flex sm:flex-wrap sm:items-center sm:gap-x-7 sm:gap-y-3"
                         >
                             {footer.links.map((link) => (
                                 <Link
                                     key={link.label}
                                     href={link.href}
-                                    className="font-poppins sm:border-0 border-r sm:pr-0 pr-4 text-sm font-medium text-white transition-colors hover:text-[#A8EB00]"
+                                    className="flex min-h-11 items-center font-poppins text-sm font-medium text-white transition-colors hover:text-[#A8EB00] sm:min-h-0"
                                 >
                                     {link.label}
                                 </Link>
@@ -156,7 +164,7 @@ export default function Footer() {
                         </nav>
 
                         <p className="font-poppins text-sm text-white">
-                         {footer.copyright}
+                            {footer.copyright}
                         </p>
                     </div>
                 </div>

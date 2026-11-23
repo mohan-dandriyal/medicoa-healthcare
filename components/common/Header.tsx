@@ -89,7 +89,7 @@ function HeaderContent({ pathname }: { pathname: string }) {
         let frame = 0;
         const update = () => {
             frame = 0;
-            const offset = (headerRef.current?.getBoundingClientRect().height ?? 0) + 24;
+            const offset = parseFloat(getComputedStyle(targets[0].element).scrollMarginTop) + 2;
             const ordered = targets.map((target) => ({ ...target, top: target.element.getBoundingClientRect().top }))
                 .sort((a, b) => a.top - b.top);
             let active = ordered[0];
@@ -249,7 +249,7 @@ function HeaderContent({ pathname }: { pathname: string }) {
                 }
             }}
             className={[
-                "z-50 h-[var(--header-height)] [--header-height:72px] sm:[--header-height:80px] lg:[--header-height:96px] w-full shrink-0 bg-white transition-shadow duration-300 shadow shadow-gray-300",
+                "z-50 h-[var(--header-height)] w-full shrink-0 bg-white transition-shadow duration-300 shadow shadow-gray-300",
                 settings.sticky ? "sticky top-0" : "relative",
                 scrolled ? "shadow-lg shadow-black/5" : "",
             ].join(" ")}
@@ -422,7 +422,7 @@ function HeaderContent({ pathname }: { pathname: string }) {
                                 duration: reduceMotion ? 0 : 0.3,
                                 ease,
                             }}
-                            style={{ maxHeight: "min-h-[50vh]" }}
+                            style={{ maxHeight: "calc(100dvh - var(--header-height))" }}
                             className="absolute right-0 top-full z-40 w-full max-w-[420px] overflow-y-auto border-t border-green-100 bg-white p-5 shadow-2xl lg:hidden"
                         >
                             <div className="space-y-2">

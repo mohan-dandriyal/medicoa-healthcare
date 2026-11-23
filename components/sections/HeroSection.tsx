@@ -4,7 +4,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
 
@@ -43,12 +42,47 @@ export default function HeroSection() {
                 className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_25%_30%,#ffffff_0%,#f2fff9_55%,#e3f8ef_100%)]"
             />
 
-            {/* Main container */}
-            <MainContainer className="">
-                <div className="relative grid min-h-[680px] items-center lg:grid-cols-[minmax(0,47fr)_minmax(0,53fr)]">
+            <div className="pointer-events-none relative mx-4 mt-6 sm:mx-6 sm:mt-8 md:mx-8 lg:absolute lg:inset-y-0 lg:right-0 lg:m-0 lg:w-1/2">
+                <motion.div
+                    initial={{
+                        opacity: 0,
+                    }}
+                    animate={{
+                        opacity: 1,
+                    }}
+                    transition={{
+                        duration: 1.1,
+                        ease: EASE,
+                    }}
+                    className="relative z-10 h-[clamp(180px,90vw,360px)] w-full overflow-hidden lg:h-full"
+                >
+                    {/* Green curved border */}
+                    <div className="absolute inset-0 overflow-hidden lg:rounded-none lg:bg-gradient-to-br lg:from-[#00A75B] lg:to-[#006B3C] lg:[clip-path:ellipse(94%_95%_at_100%_37%)]">
 
+                        {/* Image */}
+                        <div className="relative h-full w-full overflow-hidden rounded-tl-[clamp(41px,14vw,103px)] bg-white lg:rounded-none lg:[clip-path:ellipse(93%_94%_at_100%_37%)]">
+                            <Image
+                                src={hero.images.main.src}
+                                alt={hero.images.main.alt}
+                                fill
+                                preload
+                                sizes="(min-width: 1024px) 60vw, (min-width: 768px) calc(100vw - 64px), (min-width: 640px) calc(100vw - 48px), calc(100vw - 32px)"
+                                className="object-cover object-center"
+                            />
+
+                            <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent" />
+                        </div>
+                    </div>
+                </motion.div>
+            </div>
+
+            {/* Main container */}
+            <MainContainer>
+
+
+                <div className="relative grid items-center lg:min-h-[680px] lg:grid-cols-[minmax(0,47fr)_minmax(0,53fr)]">
                     {/* LEFT CONTENT */}
-                    <div className="relative z-20 pb-10 lg:pb-20 lg:pr-4 ">
+                    <div className="relative z-20 py-9 sm:py-12 lg:pb-20 lg:pr-4">
 
                         {/* Eyebrow */}
                         <motion.div
@@ -56,7 +90,7 @@ export default function HeroSection() {
                             animate="visible"
                             variants={fadeUp}
                             transition={{ duration: 0.7, ease: EASE }}
-                            className="sm:mb-8 mb-4 flex items-center gap-4 sm:mt-0 sm:mt-10 mt-10"
+                            className="mb-4 flex items-center gap-4 sm:mb-8"
                         >
                             <span
                                 className="h-[3px] w-10 shrink-0 rounded-full sm:w-12"
@@ -125,7 +159,7 @@ export default function HeroSection() {
                             className="mt-9 flex flex-wrap items-center gap-4"
                         >
                             {hero.buttons.map((button) => (
-                                <Link
+                                <a
                                     key={button.id}
                                     href={button.href}
                                     className="group inline-flex min-h-[58px] items-center justify-center gap-5 rounded-full bg-[#007747] px-8 font-poppins text-base font-semibold text-white shadow-[0_12px_30px_rgba(0,110,60,0.15)] transition-all duration-300 hover:-translate-y-1 hover:bg-[#005C36] hover:shadow-[0_16px_35px_rgba(0,110,60,0.25)] sm:px-10 sm:text-lg"
@@ -135,45 +169,10 @@ export default function HeroSection() {
                                     {button.icon === "arrow_forward" && (
                                         <ArrowForwardRoundedIcon aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1" />
                                     )}
-                                </Link>
+                                </a>
                             ))}
                         </motion.div>
                     </div>
-
-                    {/* RIGHT HERO IMAGE */}
-                    <motion.div
-                        initial={{
-                            opacity: 0,
-                            x: 0,
-                        }}
-                        animate={{
-                            opacity: 1,
-                            x: 0,
-                        }}
-                        transition={{
-                            duration: 1.1,
-                            ease: EASE,
-                        }}
-                        className="relative z-10 h-[380px] min-w-0 w-full max-w-full overflow-hidden sm:h-[500px] lg:h-full lg:min-h-[680px]"
-                    >
-                        {/* Green curved border */}
-                        <div className="absolute inset-0 overflow-hidden rounded-tl-[110px] bg-gradient-to-br from-[#00A75B] to-[#006B3C] p-[7px] sm:rounded-tl-[160px] lg:[clip-path:ellipse(94%_95%_at_100%_37%)] lg:rounded-none lg:p-0">
-
-                            {/* Image */}
-                            <div className="relative h-full w-full overflow-hidden rounded-tl-[105px] bg-white sm:rounded-tl-[155px] lg:rounded-none lg:[clip-path:ellipse(93%_94%_at_100%_37%)]">
-                                <Image
-                                    src={hero.images.main.src}
-                                    alt={hero.images.main.alt}
-                                    fill
-                                    preload
-                                    sizes="(max-width: 1024px) 100vw, 53vw"
-                                    className="object-cover object-center"
-                                />
-
-                                <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent" />
-                            </div>
-                        </div>
-                    </motion.div>
                 </div>
             </MainContainer>
 
@@ -198,7 +197,7 @@ export default function HeroSection() {
                     src={hero.images.products.src}
                     alt={hero.images.products.alt}
                     fill
-                    sizes="400px"
+                    sizes="(min-width: 1280px) 400px, 300px"
                     className="object-contain object-bottom"
                 />
             </motion.div>

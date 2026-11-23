@@ -1,65 +1,15 @@
 
 import type { Metadata } from "next";
-import {
-  Geist,
-  Geist_Mono,
-  Poppins,
-  Montserrat,
-} from "next/font/google";
 
 import "./globals.css";
 
-// Geist Font
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-// Geist Mono Font
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-// Poppins Font
-const poppins = Poppins({
-  variable: "--font-poppins",
-  subsets: ["latin"],
-  weight: [
-    "100",
-    "200",
-    "300",
-    "400",
-    "500",
-    "600",
-    "700",
-    "800",
-    "900",
-  ],
-  style: ["normal", "italic"],
-  display: "swap",
-});
-
-// Montserrat Font
-const montserrat = Montserrat({
-  variable: "--font-montserrat",
-  subsets: ["latin"],
-  weight: [
-    "100",
-    "200",
-    "300",
-    "400",
-    "500",
-    "600",
-    "700",
-    "800",
-    "900",
-  ],
-  style: ["normal", "italic"],
-  display: "swap",
-});
+const fontStylesheet = "https://fonts.googleapis.com/css2?" + [
+  "family=Geist:wght@100..900",
+  "family=Geist+Mono:wght@100..900",
+  "family=Montserrat:ital,wght@0,100..900;1,100..900",
+  "family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400",
+  "display=swap",
+].join("&");
 
 export const metadata: Metadata = {
   title: "MedicoA | Healthcare & Pharmaceuticals",
@@ -71,16 +21,10 @@ export default function RootLayout({
   children,
 }: LayoutProps<"/">) {
   return (
-    <html
-      lang="en"
-      className={`
-        ${geistSans.variable}
-        ${geistMono.variable}
-        ${poppins.variable}
-        ${montserrat.variable}
-        h-full antialiased
-      `}
-    >
+    <html lang="en" className="h-full antialiased">
+      <head>
+        <link rel="stylesheet" href={fontStylesheet} />
+      </head>
       <body className="min-h-full flex flex-col">
         {children}
       </body>

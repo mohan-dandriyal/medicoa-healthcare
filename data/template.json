@@ -228,8 +228,8 @@
                 }
               ],
               "contact": {
-                "address": "KLG St, No.99, New Delhi - 110001",
-                "phone": "+91 98765 43210"
+                "address": "3170 Rosewood Lane Unit 200, Beverly Hills, CA 90210",
+                "phone": "+91 00000 00000"
               },
               "image": {
                 "src": "/other/about-main.webp",
@@ -511,6 +511,14 @@
                   "image": "/other/team-4.webp",
                   "alt": "Dr. Clarine Kitty",
                   "icon": "favorite"
+                },
+                {
+                  "id": 5,
+                  "name": "Dr. Maya Patel",
+                  "designation": "General Physician (Test Profile)",
+                  "image": "/other/doctor_clean.webp",
+                  "alt": "Illustrative doctor portrait",
+                  "icon": "medical"
                 }
               ]
             }

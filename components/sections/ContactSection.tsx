@@ -87,7 +87,7 @@ export default function ContactSection() {
     };
 
     return (
-        <Section className="relative isolate overflow-hidden bg-[#FAFFFC] py-14 my-10">
+        <Section className="relative isolate overflow-hidden bg-[#FAFFFC] mb-10 mt-4 pb-14 pt-8 sm:mt-10 sm:pt-14">
 
 
             {/* Decorative background */}

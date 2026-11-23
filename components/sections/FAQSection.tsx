@@ -144,7 +144,7 @@ export default function FAQSection() {
     const reduceMotion = useReducedMotion();
 
     return (
-        <Section className="relative isolate overflow-hidden bg-[#FBFFFD] py-14 my-10">
+        <Section className="relative isolate overflow-hidden bg-[#FBFFFD] mb-10 mt-4 pb-14 pt-8 sm:mt-10 sm:pt-14">
             {/* Decorative background shapes */}
             <DecorativebackgroundTopLeft className="w-[400px] h-[400px] -top-84" />
             <DecorativebackgroundTopRight className="w-[400px] h-[400px] -top-84" />
