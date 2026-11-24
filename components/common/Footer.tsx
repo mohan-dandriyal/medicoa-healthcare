@@ -55,6 +55,8 @@ export default function Footer() {
                             </p>
                         </div>
 
+                        <QuickLinks className="block lg:hidden" />
+
                         {/* ADDRESS */}
                         <div>
                             <h3 className="flex items-center gap-3 font-montserrat text-lg font-bold">
@@ -140,30 +142,10 @@ export default function Footer() {
                     <div className="my-8 h-[2px] w-full bg-[#A8EB00]" />
 
                     {/* BOTTOM FOOTER */}
-                    <div className="flex flex-col gap-3 sm:gap-6 lg:flex-row lg:items-center lg:justify-between">
-                        <h3 className="sm:hidden flex items-center gap-3 font-montserrat text-lg font-bold">
-                             <LinkIcon
-                                    sx={{ fontSize: 28 }}
-                                    className="text-[#A8EB00]"
-                                />
-                            Quick Links
-                        </h3>
-                        <nav
-                            aria-label="Footer navigation"
-                            className="grid grid-cols-2 gap-x-4 sm:flex sm:flex-wrap sm:items-center sm:gap-x-7 sm:gap-y-3"
-                        >
-                            {footer.links.map((link) => (
-                                <Link
-                                    key={link.label}
-                                    href={link.href}
-                                    className="flex min-h-11 items-center font-poppins text-sm font-medium text-white transition-colors hover:text-[#A8EB00] sm:min-h-0"
-                                >
-                                    {link.label}
-                                </Link>
-                            ))}
-                        </nav>
+                    <div>
+                        <QuickLinks className="lg:flex hidden" />
 
-                        <p className="font-poppins text-sm text-white">
+                        <p className="font-poppins text-sm lg:text-start text-center text-white lg:hidden block">
                             {footer.copyright}
                         </p>
                     </div>
@@ -171,4 +153,37 @@ export default function Footer() {
             </MainContainer>
         </footer>
     );
+}
+
+
+function QuickLinks({ className }: { className: string }) {
+    return (
+        <div className={`flex flex-col gap-3 sm:gap-6 lg:flex-row lg:items-center lg:justify-between ${className}`}>
+            <h3 className="lg:hidden flex items-center gap-3 font-montserrat text-lg font-bold">
+                <LinkIcon
+                    sx={{ fontSize: 28 }}
+                    className="text-[#A8EB00]"
+                />
+                {footer.quickLink.title}
+            </h3>
+            <nav
+                aria-label="Footer navigation"
+                className="grid grid-cols-2 gap-x-4 lg:flex sm:flex-wrap lg:items-center lg:gap-x-6 gap-y-4 mt-2 lg:mt-0"
+            >
+                {footer.quickLink.links.map((link) => (
+                    <Link
+                        key={link.label}
+                        href={link.href}
+                        className="flex lg:min-h-11 items-center font-poppins text-sm font-medium text-white transition-colors hover:text-[#A8EB00] sm:min-h-0"
+                    >
+                        {link.label}
+                    </Link>
+                ))}
+            </nav>
+
+            <p className="font-poppins text-sm lg:text-start text-center text-white hidden  lg:block">
+                {footer.copyright}
+            </p>
+        </div>
+    )
 }
